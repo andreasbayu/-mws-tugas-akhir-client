@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">mws-tugas-akhir</string>
+    <string name="jwt_token">JWT_TOKEN</string>
+    <string name="user_id">USER_ID</string>
+</resources>
