@@ -66,8 +66,8 @@ class InsertMenuActivity : AppCompatActivity() {
 
         postMenu.enqueue(object : Callback<Unit>{
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                if (response.isSuccessful && response.code() == 200) {
-                    showToast(this@InsertMenuActivity, "Berhasil menghapus data")
+                if (response.isSuccessful && response.code() == 201) {
+                    showToast(this@InsertMenuActivity, "Berhasil menambah data")
                     val intent = Intent(this@InsertMenuActivity, MenuActivity::class.java)
                     startActivity(intent)
                     finish()

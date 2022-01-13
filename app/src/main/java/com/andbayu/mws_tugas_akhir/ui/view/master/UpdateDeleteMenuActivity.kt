@@ -86,7 +86,7 @@ class UpdateDeleteMenuActivity : AppCompatActivity() {
 
         updateMenu.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                if (response.isSuccessful && response.code() == 200) {
+                if (response.isSuccessful) {
                     showToast(this@UpdateDeleteMenuActivity, "Berhasil merubah data")
                     val intent = Intent(this@UpdateDeleteMenuActivity, MenuActivity::class.java)
                     startActivity(intent)
@@ -110,7 +110,8 @@ class UpdateDeleteMenuActivity : AppCompatActivity() {
 
         deleteMenu.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                if (response.isSuccessful && response.code() == 200) {
+                Log.d("Response", "${response.body()}")
+                if (response.isSuccessful) {
                     showToast(this@UpdateDeleteMenuActivity, "Berhasil menghapus data")
                     val intent = Intent(this@UpdateDeleteMenuActivity, MenuActivity::class.java)
                     startActivity(intent)

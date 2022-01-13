@@ -62,7 +62,7 @@ class MenuActivity : AppCompatActivity() {
             ) {
                 if (response.code() != 200) return showToast(
                     this@MenuActivity,
-                    "Terdasi masalah"
+                    "Terjadi masalah"
                 )
                 val body = response.body()
 
@@ -71,7 +71,7 @@ class MenuActivity : AppCompatActivity() {
                 if (body != null) {
                     data.addAll(body)
                 }
-
+                Log.d("RESULT", "data ${data.size}")
                 rvMenu.layoutManager = GridLayoutManager(this@MenuActivity, 2)
                 rvMenu.adapter = MenuAdapter(data)
 

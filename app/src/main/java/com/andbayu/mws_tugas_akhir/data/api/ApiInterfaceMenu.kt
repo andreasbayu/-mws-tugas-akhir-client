@@ -23,7 +23,7 @@ interface ApiInterfaceMenu {
         kategoriId: RequestBody,
     ) : Call<Unit>
 
-    @PUT("kategorimenu")
+    @PUT("menu")
     fun updateMenu(
         @Part("nama")
         nama: RequestBody,
@@ -35,7 +35,7 @@ interface ApiInterfaceMenu {
         kategoriId: RequestBody,
     ) : Call<Unit>
 
-    @DELETE("kategorimenu/{id}")
+    @DELETE("menu/{id}")
     fun deleteMenu(
         @Path("id")
         id: String

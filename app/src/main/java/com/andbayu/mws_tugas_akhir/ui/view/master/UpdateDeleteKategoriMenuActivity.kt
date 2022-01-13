@@ -23,8 +23,6 @@ class UpdateDeleteKategoriMenuActivity : AppCompatActivity() {
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
     private var id: String? = ""
-    private var nama: String? = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_delete_kategori_menu)
@@ -34,10 +32,7 @@ class UpdateDeleteKategoriMenuActivity : AppCompatActivity() {
         btnUpdate = findViewById(R.id.btn_update)
 
         id = intent.getStringExtra("id")
-        nama = intent.getStringExtra("nama")
-
-
-        edtNama.setText(nama)
+        edtNama.setText(intent.getStringExtra("nama"))
 
         btnUpdate.setOnClickListener {
             update()
@@ -69,7 +64,7 @@ class UpdateDeleteKategoriMenuActivity : AppCompatActivity() {
 
         updateKategotiMenu.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                if (response.isSuccessful && response.code() == 200) {
+                if (response.isSuccessful) {
                     showToast(this@UpdateDeleteKategoriMenuActivity, "Berhasil merubah data")
                     val intent = Intent(this@UpdateDeleteKategoriMenuActivity, KategoriMenuActivity::class.java)
                     startActivity(intent)
@@ -96,7 +91,7 @@ class UpdateDeleteKategoriMenuActivity : AppCompatActivity() {
 
         deleteKategoriMenu.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                if (response.isSuccessful && response.code() == 200) {
+                if (response.isSuccessful) {
                     showToast(this@UpdateDeleteKategoriMenuActivity, "Berhasil menghapus data")
                     val intent = Intent(this@UpdateDeleteKategoriMenuActivity, KategoriMenuActivity::class.java)
                     startActivity(intent)
@@ -120,7 +115,7 @@ class UpdateDeleteKategoriMenuActivity : AppCompatActivity() {
         if (nama.isEmpty()) {
             message = "Nama tidak boleh kosong"
             isEmpty = true
-            Utils.showToast(this, message)
+            showToast(this, message)
             edtNama.error = message
         }
         return isEmpty
